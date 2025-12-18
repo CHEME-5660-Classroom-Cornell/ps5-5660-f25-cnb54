@@ -6,14 +6,9 @@ const _PATH_TO_FIGS = joinpath(_ROOT, "figs");
 
 # make sure all is up to date -
 using Pkg
-# Always activate the project environment
-Pkg.activate(".")
 if (isfile(joinpath(_ROOT, "Manifest.toml")) == false) # have manifest file, we are good. Otherwise, we need to instantiate the environment
     Pkg.add(path="https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git")
-    Pkg.resolve(); Pkg.instantiate(); Pkg.update();
-else
-    # Ensure packages are resolved even if manifest exists
-    Pkg.resolve()
+    Pkg.activate("."); Pkg.resolve(); Pkg.instantiate(); Pkg.update();
 end
 
 # load external packages -
